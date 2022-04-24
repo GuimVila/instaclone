@@ -16,6 +16,10 @@ CREATE TABLE users(
     CONSTRAINT pk_users PRIMARY KEY(id)
 )ENGINE=InnoDb; 
 
+INSERT INTO users VALUES(NULL, 'user', 'Guillem', 'Vila', 'Guillem', 'guillem.vtorrent@gmail.com', 'pass', NULL, CURTIME(), CURTIME(), NULL); 
+INSERT INTO users VALUES(NULL, 'user', 'Miquel', 'Perez', 'Miquel', 'miquel@gmail.com', 'pass', NULL, CURTIME(), CURTIME(), NULL); 
+INSERT INTO users VALUES(NULL, 'user', 'Joaquim', 'Ors', 'Joaquim', 'joaquim@gmail.com', 'pass', NULL, CURTIME(), CURTIME(), NULL); 
+
 CREATE TABLE IF NOT EXISTS images(
     id              int(255) auto_increment not null, 
     user_id         int(255),
@@ -26,6 +30,12 @@ CREATE TABLE IF NOT EXISTS images(
     CONSTRAINT pk_images PRIMARY KEY(id),
     CONSTRAINT fk_images_users FOREIGN KEY(user_id) REFERENCES users(id)
 )ENGINE=InnoDb; 
+
+INSERT INTO images VALUES(NULL, 1, 'test.jpg', 'test description 1', CURTIME(), CURTIME()); 
+INSERT INTO images VALUES(NULL, 1, 'beach.jpg', 'test description 2', CURTIME(), CURTIME()); 
+INSERT INTO images VALUES(NULL, 2, 'sand.jpg', 'test description 3', CURTIME(), CURTIME()); 
+INSERT INTO images VALUES(NULL, 3, 'family.jpg', 'test description 4', CURTIME(), CURTIME()); 
+
 
 CREATE TABLE IF NOT EXISTS comments(
     id              int(255) auto_increment not null, 
@@ -39,6 +49,10 @@ CREATE TABLE IF NOT EXISTS comments(
     CONSTRAINT fk_comments_images FOREIGN KEY(image_id) REFERENCES images(id)
 )ENGINE=InnoDb; 
 
+INSERT INTO comments VALUES(NULL, 1, 4, 'Nice family picture!', CURTIME(), CURTIME()); 
+INSERT INTO comments VALUES(NULL, 2, 1, 'Nice picture!', CURTIME(), CURTIME()); 
+INSERT INTO comments VALUES(NULL, 3, 2, 'Love it!', CURTIME(), CURTIME()); 
+
 CREATE TABLE IF NOT EXISTS likes(
     id              int(255) auto_increment not null, 
     user_id         int(255),
@@ -50,4 +64,8 @@ CREATE TABLE IF NOT EXISTS likes(
     CONSTRAINT fk_likes_images FOREIGN KEY(image_id) REFERENCES images(id)
 )ENGINE=InnoDb; 
 
+INSERT INTO likes VALUES(NULL, 1, 4, CURTIME(), CURTIME()); 
+INSERT INTO likes VALUES(NULL, 2, 3, CURTIME(), CURTIME()); 
+INSERT INTO likes VALUES(NULL, 3, 2, CURTIME(), CURTIME()); 
+INSERT INTO likes VALUES(NULL, 3, 1, CURTIME(), CURTIME()); 
 

@@ -33,6 +33,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+     // One to many
+
+     public function images() {
+        return $this->hasMany('App\Models\Image'); // Join
+    }
+
     /**
      * The attributes that should be cast.
      *
