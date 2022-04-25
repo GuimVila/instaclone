@@ -46,4 +46,6 @@ Route::get('/settings', [App\Http\Controllers\UserController::class, 'config'])-
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::get('change-password', [App\Http\Controllers\ChangePasswordController::class, 'index']);
 Route::post('change-password', [App\Http\Controllers\ChangePasswordController::class, 'changePassword'])->name('change.password');
+Route::get('/user/avatar/{filename}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.avatar');
+
 

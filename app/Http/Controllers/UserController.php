@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function config() {
         return view('user.config'); 
     }
@@ -34,12 +41,32 @@ class UserController extends Controller
         $user->name = $name; 
         $user->surname = $surname; 
         $user->nick = $nick; 
-        $user->email = $email;     
+        $user->email = $email;   
+        
+        //Update img
+
+        $image_path = $request->file('image_path'); 
+        if($image_path) {
+
+            // Add unique name
+            $image_path_name = time().$image_path->getClientOriginalName(); 
+
+            //Save inn the storage/users folder
+            Storage::disk('users')->put($image_path_name, File::get($image_path));
+
+            // Set name into the object
+            $user->image = $image_path_name; 
+        }
         
         //Make query to DB
         $user->update();
 
         return redirect()->route('settings')
             ->with(['message'=>'User updated successfully']);
+    }
+    
+    public function getImage($filename) {
+        $file = Storage::disk('users')->get($filename);
+        return new Response($file, 200); 
     }
 }
