@@ -1,17 +1,26 @@
 .avatar {
     width: 55px; 
     margin-bottom: 1rem;
+    
 }
 
 .navbar .container-avatar {
-    width: 2.2rem; 
-    height: 2.2rem; 
+    width: 2.1rem; 
+    height: 2.1rem; 
     border-radius: 900px;
     overflow: hidden;
-    margin-left: 1em; 
-    margin-right: 1em; 
+    margin-left: 0.7em; 
+    margin-right: 1px;
 }
 
 .navbar .container-avatar img{
     height: 100%; 
+}
+
+#image_path_label {
+    padding-right: 1.3em;
+}
+
+.form-group.row {
+    margin-right: 1em;
 }

@@ -55,16 +55,13 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="">Home</a>    
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>    
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="">Upload Image</a>        
+                                <a class="nav-link" href="{{ route('image.create') }}">New Post</a>        
                             </li>
 
-                            <li>
-                                @include('includes.avatar')
-                            </li>
  
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,6 +84,9 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+                            <li>
+                                @include('includes.avatar')
                             </li>
                         @endguest
                     </ul>
