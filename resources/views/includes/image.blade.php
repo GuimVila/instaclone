@@ -8,12 +8,12 @@
         @endif
 
         <div class="data-user">
-            
-                {{ $image->user->name.' '.$image->user->surname}}
-                <span class="nickname">
-                    {{  '| @'.$image->user->nick }}
-                </span>
-            
+                <a href="{{ route('profile', ['id' => $image->user->id]) }}">
+                    {{ $image->user->name.' '.$image->user->surname}}
+                    <span class="nickname">
+                        {{  '| @'.$image->user->nick }}
+                    </span>
+                </a>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
         <div class="clearfix"></div>
         <div class="description">
             <span class="nickname"> {{  '@'.$image->user->nick }} </span>
-            <span class="date"> {{ \FormatTime::LongTimeFilter($image->created_at) }}</span>
+            <span class="date"> {{ ' | '.\FormatTime::LongTimeFilter($image->created_at) }}</span>
             <p>{{  $image->description }}</p>              
         </div>
         <a href="" class="btn btn-sm btn-warning btn-comments">

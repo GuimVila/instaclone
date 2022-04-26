@@ -117,3 +117,36 @@ span.likes-counter {
     color: gray;  
     font-size: 0.8rem; 
 }
+
+div.data-user a {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-user {
+    float: left;
+    height: 7em;
+    margin-bottom: 0.7em;
+}
+
+.profile-user .container-avatar {
+    width: 7em; 
+    height: 7em; 
+    border-radius: 900px; 
+    overflow: hidden;
+    float: left;
+}
+
+.profile-user .container-avatar img{
+    width: 100%; 
+    height: 100%;
+}
+
+.profile-user .user-info {
+    float: left; 
+    padding-left: 1em;
+}
+
+.profile-divider {
+    margin-bottom: 1.7em;
+}
