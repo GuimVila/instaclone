@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         @include('includes.message')
-        @foreach($images as $image)
+      
             <div class="card pub_image mb-3">
                 <div class="card-header">
 
@@ -16,28 +16,22 @@
                     @endif
 
                     <div class="data-user">
-                        
-                            {{ $image->user->name.' '.$image->user->surname}}
-                            <span class="nickname">
-                                {{  '| @'.$image->user->nick }}
-                            </span>
-                        
+                        {{ $image->user->name.' '.$image->user->surname}}
+                        <span class="nickname">
+                            {{  '| @'.$image->user->nick }}
+                        </span>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <a href="{{ route('image.detail', ['id' => $image->id]) }}">
-                        <div class="image-container">
-                            <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
-                        </div>
-                    </a>
+                    <div class="image-container">
+                        <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
+                    </div>
                     <div class="likes">
                         <img class="like-img" src="{{ asset('img/hearts-grey.png') }}"/>
                     </div>
-                    <div class="clearfix"></div>
                     <div class="description">
                         <span class="nickname"> {{  '@'.$image->user->nick }} </span>
-                        <span class="date"> {{ \FormatTime::LongTimeFilter($image->created_at) }}</span>
                         <p>{{  $image->description }}</p>              
                     </div>
                     <a href="" class="btn btn-sm btn-warning btn-comments">
@@ -45,12 +39,6 @@
                     </a>
                 </div>
             </div>
-        @endforeach 
-
-        <!-- Pagination -->
-        <div class="clearfix"></div>
-        {{$images->links()}}
         </div>
     </div>
-</div>
 @endsection

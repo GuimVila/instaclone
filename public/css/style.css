@@ -4,7 +4,8 @@
     
 }
 
-.navbar .container-avatar {
+.navbar .container-avatar, 
+.pub_image .container-avatar {
     width: 2.1rem; 
     height: 2.1rem; 
     border-radius: 900px;
@@ -13,7 +14,8 @@
     margin-right: 1px;
 }
 
-.navbar .container-avatar img{
+.navbar .container-avatar img, 
+.pub_image .container-avatar img {
     height: 100%; 
 }
 
@@ -21,6 +23,78 @@
     padding-right: 1.3em;
 }
 
+.pub_image .container-avatar {
+    float: left;
+    margin-right: 1em;
+}
+
+
+.pub_image .data-user {
+    font-weight: bold;
+    margin-left: 1em;
+    line-height: 2em;
+}
+
+
+
+.pub_image .nickname {
+    color: gray; 
+    margin-top: 0.2em; 
+    display: inline-block;
+}
+
+.pub_image .date {
+    color: gray; 
+    margin-top: 0.2em; 
+    display: inline-block;
+}
+
 .form-group.row {
     margin-right: 1em;
+}
+
+.image-container {
+    width: 100%;
+    max-height: 40em;
+    overflow:hidden; 
+}
+
+.image-container img {
+    width:100%; 
+    background-size: contain;
+}
+
+.pub_image .card-body {
+    padding: 0;
+}
+
+.pub_image .description {
+    padding: 2em;
+    padding-bottom: 0.2rem;
+    padding-top: 0; 
+    margin-bottom: 0.3rem;
+}
+
+.pub_image .description p{
+    margin-bottom: 0;
+}
+
+.pub_image .btn-comments {
+    margin: 2em;
+    margin-top: 0.2em;
+    
+}
+
+div.likes {
+   padding-left: 1.9em;
+}
+
+.likes img {
+    width: 1.5rem;
+    padding-top: 0.9em;  
+    padding-bottom: 0.6em;
+}
+
+img.like img {
+    margin-left: 0.7em;  
 }
