@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Like;
 
 class LikeController extends Controller
 {
@@ -10,18 +11,28 @@ class LikeController extends Controller
         $this->middleware('auth');
     }
 
+    public function index() {
+        $user = \Auth::user(); 
+        $likes = Like::where('user_id', $user->id)->orderBy('id', 'desc')
+                        ->paginate(5); 
+
+        return view('like.index', [
+            'likes' => $likes
+        ]);
+    }
+
     public function like($image_id) {
         //Get user and image's data
         $user = \Auth::user(); 
 
         //Check if like exists
-        $isset_like = Like::where('user_id', $user->id)
-            ->where('image_id', $image_id)
+        $isset_like = Like::where("user_id", $user->id)
+            ->where("image_id", $image_id)
             ->count(); 
 
         if($isset_like == 0) {
             $like = new  Like(); 
-            $like->user_id = $user_id;  
+            $like->user_id = $user->id;  
             $like->image_id = (int)$image_id; 
 
             //Save
@@ -38,7 +49,6 @@ class LikeController extends Controller
 
     
     }
-
     public function dislike($image_id) {
             //Get user and image's data
             $user = \Auth::user(); 

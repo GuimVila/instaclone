@@ -54,7 +54,8 @@ Route::get('/image/{id}', [App\Http\Controllers\ImageController::class, 'detail'
 Route::post('/comment/save', [App\Http\Controllers\CommentController::class, 'store'])->name('comment.save');
 Route::get('/comment/delete/{id}', [App\Http\Controllers\CommentController::class, 'delete'])->name('comment.delete');
 Route::get('/like/{image_id}', [App\Http\Controllers\LikeController::class, 'like'])->name('like.save');
-Route::get('/dilike/{image_id}', [App\Http\Controllers\LikeController::class, 'dislike'])->name('like.delete');
+Route::get('/dislike/{image_id}', [App\Http\Controllers\LikeController::class, 'dislike'])->name('like.delete');
+Route::get('/likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes');
 
 
 

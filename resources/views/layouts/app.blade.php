@@ -61,6 +61,10 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('likes') }}">Likes</a>    
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('image.create') }}">New Post</a>        
                             </li>
 
