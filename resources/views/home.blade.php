@@ -32,7 +32,21 @@
                         </div>
                     </a>
                     <div class="likes">
-                        <img class="like-img" src="{{ asset('img/hearts-grey.png') }}"/>
+                    <!-- Check if user liked the post previously -->
+                        <?php $user_like = false; ?>
+                        @foreach($image->likes as $like)
+                            @if($like->user->id == Auth::user()->id)
+                                <?php $user_like = true; ?>    
+                            @endif
+                        @endforeach
+
+                        @if($user_like) 
+                        <img class="like-img btn-like" src="{{ asset('img/hearts-red.png') }}" data-id="{{ $image->id }}" />
+                        @else
+                        <img class="like-img btn-dislike" src="{{ asset('img/hearts-grey.png') }}" data-id="{{ $image->id }}" />
+                        @endif
+                        <span class="likes-counter">{{ count($image->likes) }}</span>
+                        
                     </div>
                     <div class="clearfix"></div>
                     <div class="description">

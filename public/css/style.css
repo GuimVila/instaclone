@@ -112,3 +112,8 @@ h2.comments {
 div.comment {
     padding-left: 2em;
 }
+
+span.likes-counter {
+    color: gray;  
+    font-size: 0.8rem; 
+}
