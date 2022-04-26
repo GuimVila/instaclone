@@ -13,7 +13,7 @@ class Image extends Model
     // One to many
 
     public function comments() {
-        return $this->hasMany('App\Models\Comment'); // Join
+        return $this->hasMany('App\Models\Comment')->orderBy('id', 'desc'); // Join
     }
 
     // One to many

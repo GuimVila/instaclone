@@ -6,7 +6,7 @@
         <div class="col-md-8">
         @include('includes.message')
       
-            <div class="card pub_image mb-3">
+            <div class="card pub_image pub_image_detail mb-3">
                 <div class="card-header">
 
                     @if($image->user->image)
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="image-container">
+                    <div class="image-container image-detail">
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
                     </div>
                     <div class="likes">
@@ -32,11 +32,39 @@
                     </div>
                     <div class="description">
                         <span class="nickname"> {{  '@'.$image->user->nick }} </span>
+                        <span class="nickname date"> {{ '| '.\FormatTime::LongTimeFilter($image->created_at) }}</span>
                         <p>{{  $image->description }}</p>              
                     </div>
-                    <a href="" class="btn btn-sm btn-warning btn-comments">
-                        Comments ({{ count($image->comments) }})
-                    </a>
+                    <h2 class="comments">Comments ({{ count($image->comments) }})</h2>
+                    <hr>
+
+                    <form class="comments" method="POST" action="{{ route('comment.save') }}">
+                        @csrf
+                        <input type="hidden" name="image_id" value="{{ $image->id }}"/>
+                        <p>
+                        <textarea name="content" id="" class="form-control mb-3" {{ $errors->has('content') ? 'is-invalid' : '' }} cols="30" rows="4"required></textarea>
+                        @if($errors->has('content'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('connection_status') }}</strong>
+                            </span>
+                        @endif
+                        </p>  <!-- use this error bootstrap and copy it to the rest -->
+                        <button type="submit" class="btn btn-success">Comment</button>
+                    </form>
+
+                    @foreach($image->comments as $comment)
+                        <div class="comment">  
+                            <span class="nickname"> {{  '@'.$comment->user->nick }} </span>
+                            <span class="nickname date"> {{ '| '.\FormatTime::LongTimeFilter($comment->created_at) }}</span>
+                            <p>{{  $comment->content }}  
+                            @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="btn btn-sm btn-danger">
+                                    Delete  
+                                </a> 
+                            @endif 
+                            </p>          
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

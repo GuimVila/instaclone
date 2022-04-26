@@ -35,8 +35,6 @@
     line-height: 2em;
 }
 
-
-
 .pub_image .nickname {
     color: gray; 
     margin-top: 0.2em; 
@@ -62,6 +60,7 @@
 .image-container img {
     width:100%; 
     background-size: contain;
+    height: 100%;
 }
 
 .pub_image .card-body {
@@ -97,4 +96,19 @@ div.likes {
 
 img.like img {
     margin-left: 0.7em;  
+}
+
+form.comments {
+    padding: 1.9em;
+    padding-top: 0.5em; 
+}
+
+h2.comments {
+    padding-left: 1.6em;
+    padding-top: 0; 
+    font-size: 1.1rem; 
+}
+
+div.comment {
+    padding-left: 2em;
 }

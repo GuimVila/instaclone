@@ -19,50 +19,50 @@ class FormatTime {
                     if ($since_start->h == 0) {
                         if ($since_start->i == 0) {
                             if ($since_start->s == 0) {
-                                $result = $since_start->s . ' segundos';
+                                $result = $since_start->s . ' seconds';
                             } else {
                                 if ($since_start->s == 1) {
-                                    $result = $since_start->s . ' segundo';
+                                    $result = $since_start->s . ' second';
                                 } else {
-                                    $result = $since_start->s . ' segundos';
+                                    $result = $since_start->s . ' seconds';
                                 }
                             }
                         } else {
                             if ($since_start->i == 1) {
-                                $result = $since_start->i . ' minuto';
+                                $result = $since_start->i . ' minute';
                             } else {
-                                $result = $since_start->i . ' minutos';
+                                $result = $since_start->i . ' minutes';
                             }
                         }
                     } else {
                         if ($since_start->h == 1) {
-                            $result = $since_start->h . ' hora';
+                            $result = $since_start->h . ' hour';
                         } else {
-                            $result = $since_start->h . ' horas';
+                            $result = $since_start->h . ' hours';
                         }
                     }
                 } else {
                     if ($since_start->d == 1) {
-                        $result = $since_start->d . ' día';
+                        $result = $since_start->d . ' day';
                     } else {
-                        $result = $since_start->d . ' días';
+                        $result = $since_start->d . ' days';
                     }
                 }
             } else {
                 if ($since_start->m == 1) {
-                    $result = $since_start->m . ' mes';
+                    $result = $since_start->m . ' month';
                 } else {
-                    $result = $since_start->m . ' meses';
+                    $result = $since_start->m . ' months';
                 }
             }
         } else {
             if ($since_start->y == 1) {
-                $result = $since_start->y . ' año';
+                $result = $since_start->y . ' year';
             } else {
-                $result = $since_start->y . ' años';
+                $result = $since_start->y . ' years';
             }
         }
  
-        return "Hace " . $result;
+        return $result . ' ago';
     }
 }
