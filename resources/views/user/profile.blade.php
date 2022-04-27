@@ -18,7 +18,8 @@
   
             </div>
             <div class="clearfix"></div>
-                <hr class="profile-divider"/>
+            <hr class="profile-divider"/>
+            
             <div class="clearfix"></div>
 
         @foreach($user->images as $image)

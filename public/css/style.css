@@ -148,5 +148,32 @@ div.data-user a {
 }
 
 .profile-divider {
-    margin-bottom: 1.7em;
+    margin-bottom: 2em;
+}
+
+div.action {
+    margin-left: 2em;
+}
+
+img.trash-delete {
+    width: 1.1em; 
+    height: 1.1em;
+    float: right; 
+    margin-right: 3em;
+}
+
+div.user-info {
+    float: left;
+}
+
+a.btn.btn-success.users.mb-3 {
+    float: right; 
+    margin-top: 2.5em; 
+    margin-right: 1em; 
+}
+
+.btn-search {
+    margin-left: 0.3em;
+    margin-top: 1em; 
+    padding-left: 0px; 
 }

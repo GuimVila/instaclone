@@ -61,6 +61,10 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}">Discover</a>    
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('likes') }}">Likes</a>    
                             </li>
 

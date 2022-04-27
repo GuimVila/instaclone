@@ -41,6 +41,43 @@
                             <img class="like-img btn-dislike" src="{{ asset('img/hearts-grey.png') }}" data-id="{{ $image->id }}" />
                         @endif
                         <span class="likes-counter">{{ count($image->likes) }}</span>
+                        @if(Auth::user() && Auth::user()->id == $image->user->id)
+                
+                    @endif
+                    </div>
+                    <div class="action">
+                        <a href="{{ route('image.edit', ['id' => $image->id]) }}"  class="btn btn-sm btn-primary" role="button">Update</a>
+
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Delete
+                        </button>
+
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Are you sure?</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                This post will be permanently deleted. Are you sure you want to do that? 
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-danger" role="button">Delete</a>
+                            </div>
+
+                            </div>
+                        </div>
+                        </div>
                     </div>
                     <div class="description">
                         <span class="nickname"> {{  '@'.$image->user->nick }} </span>
@@ -70,8 +107,8 @@
                             <span class="nickname date"> {{ '| '.\FormatTime::LongTimeFilter($comment->created_at) }}</span>
                             <p>{{  $comment->content }}  
                             @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
-                                <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="btn btn-sm btn-danger">
-                                    Delete  
+                                <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="">
+                                <img class="trash-delete" src="{{ asset('img/trash.png') }}"/> 
                                 </a> 
                             @endif 
                             </p>          

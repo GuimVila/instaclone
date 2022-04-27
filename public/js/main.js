@@ -1,6 +1,11 @@
 var url = 'http://127.0.0.1:8000';
 $(function(){
 
+     //Search bar
+    $("#search_bar").on("submit", function() {
+        $(this).attr("action", url+'/users/'+$("#search_bar #search").val());
+    }); 
+
     $(".btn-like").css('cursor', 'pointer'); 
     $(".btn-dislike").css('cursor', 'pointer'); 
 	// Al fer click al like img
@@ -46,8 +51,8 @@ $(function(){
                 }
             });   		
 		}
-	})
-})
+	});
+});
 
 // var url = 'http://127.0.0.1:8000'; 
 // window.addEventListener("load", function(){
